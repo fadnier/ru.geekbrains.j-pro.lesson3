@@ -1,0 +1,7 @@
+# Project exclude paths
+/client/target/
+/server/target/
+/.idea
+*.iml
+# Project exclude paths
+/out/
