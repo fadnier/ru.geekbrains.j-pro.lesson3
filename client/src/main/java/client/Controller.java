@@ -55,6 +55,7 @@ public class Controller implements Initializable {
 
     private boolean authenticated;
     private String nick;
+    private String login;
 
     public void setAuthenticated(boolean authenticated) {
         this.authenticated = authenticated;
@@ -119,6 +120,7 @@ public class Controller implements Initializable {
                         if (str.startsWith("/authok ")) {
                             nick = str.split(" ")[1];
                             setAuthenticated(true);
+                            HistoryChat.load(login, textArea);
                             break;
                         }
 
@@ -146,6 +148,7 @@ public class Controller implements Initializable {
 
                         } else {
                             textArea.appendText(str + "\n");
+                            HistoryChat.save(login,str+"\n");
                         }
                     }
                 }catch (RuntimeException e){
@@ -185,6 +188,7 @@ public class Controller implements Initializable {
         try {
             out.writeUTF("/auth " + loginField.getText().trim() + " " + passwordField.getText().trim());
             passwordField.clear();
+            login = loginField.getText().trim();
         } catch (IOException e) {
             e.printStackTrace();
         }

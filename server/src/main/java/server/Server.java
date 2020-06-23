@@ -76,12 +76,13 @@ public class Server {
     public void subscribe(ClientHandler clientHandler) {
         clients.add(clientHandler);
         broadcastClientList();
-        
+
+        /*
         Map<Integer,String> msg = messageService.getAllMessage(clientHandler.getId());
 
         for (Map.Entry<Integer,String> entry: msg.entrySet()) {
             clientHandler.sendMsg(entry.getValue());
-        }
+        }*/
     }
 
     public void unsubscribe(ClientHandler clientHandler) {
